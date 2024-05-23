@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+             @font-face {
+            font-family: 'CustomFont';
+            src: url('./fonts/IKEASans-Bold.ttf') format('ttf')
+        }
+    html{
+        height: 100%;
+        background: #FFF121;
+    }
+    body{
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('../../media/background.png'); /* Replace with your image path */
+        background-repeat: repeat;
+        background-size: cover; /* Adjusts the size to cover the entire page */
+    }
+
+    #money-rain-element{
+        height: 70vh;
+        width: 100%;
+    }
+
+    .bag-bar-element{
+        height: 30vh;
+        width: 100%;
+        position: relative;
+    }
+
+    #bag{
+        width: 10rem;
+        height: auto;
+        position: absolute;
+        cursor: pointer;
+    }
+
+    .bagmobile{
+        width: 20rem;
+        height: auto;
+    }
+
+    #money{
+        width: 8rem;
+        height: auto;
+    }
+    #neg{
+        width: 8rem;
+        height: auto;
+    }
+
+    .moneymobile{
+        width: 18rem !important;
+    }
+
+    .negmobile{
+        width: 18rem !important;
+    }
+
+    #score{
+        border: 1px solid black;
+        left: 1rem;
+        top: 1rem;
+        padding: 1rem;
+        background: rgba(0,0,0,0.5);
+        border-radius: 1rem;
+        color: white;
+        font-size: 2rem;
+    }
+
+
+</style>
+</head>
+
+<body>
+    <div style="
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    font-family: 'CustomFont', sans-serif;
+"><div id="score">SCORE: 0</div></div>
+    <div id="money-rain-element">
+    </div>
+    <div class="bag-bar-element">
+        <img id="bag" src="../../media/bag.png">
+    </div>
+    <script>
+        let score = 0;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const bag = document.getElementById('bag');
+            const bagBar = document.querySelector('.bag-bar-element');
+            const moneyRainElement = document.getElementById('money-rain-element');
+            let isDragging = false;
+            let startX, initialLeft;
+
+            bag.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                startX = e.clientX;
+                initialLeft = bag.offsetLeft;
+                e.preventDefault();
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    const deltaX = e.clientX - startX;
+                    const newLeft = Math.min(
+                        Math.max(initialLeft + deltaX, 0),
+                        bagBar.clientWidth - bag.clientWidth
+                    );
+                    bag.style.left = newLeft + 'px';
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+
+            bag.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                startX = e.touches[0].clientX;
+                initialLeft = bag.offsetLeft;
+                e.preventDefault();
+            });
+
+            document.addEventListener('touchmove', (e) => {
+                if (isDragging) {
+                    const deltaX = e.touches[0].clientX - startX;
+                    const newLeft = Math.min(
+                        Math.max(initialLeft + deltaX, 0),
+                        bagBar.clientWidth - bag.clientWidth
+                    );
+                    bag.style.left = newLeft + 'px';
+                }
+            });
+
+            document.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+
+            function createMoneyElement() {
+                const money = document.createElement('img');
+                money.src = '../../media/money.png';
+                money.id = 'money';
+                money.style.left = Math.random() * moneyRainElement.clientWidth + 'px';
+                money.style.top = '-10rem'; // Start above the visible area
+                money.style.position = 'absolute'
+                moneyRainElement.appendChild(money);
+                mobileDeviceCheck();
+                let speed = Math.random() * 5 + 2; // Random speed between 2 and 7 seconds
+
+                money.animate([
+                    { transform: `translateY(${moneyRainElement.clientHeight}rem)` }
+                ], {
+                    duration: speed * 5000,
+                    easing: 'linear',
+                    iterations: 1,
+                    fill: 'forwards'
+                }).onfinish = () => {
+                    money.remove();
+                };
+            }
+
+            function createNegElement() {
+                const money = document.createElement('img');
+                money.src = '../../media/meatball.png'; 
+                money.id = 'neg';
+                money.style.left = Math.random() * moneyRainElement.clientWidth + 'px';
+                money.style.top = '-10rem'; // Start above the visible area
+                money.style.position = 'absolute'
+                moneyRainElement.appendChild(money);
+                mobileDeviceCheck();
+                let speed = Math.random() * 2 + 2; // Random speed between 2 and 7 seconds
+
+                money.animate([
+                    { transform: `translateY(${moneyRainElement.clientHeight}rem)` }
+                ], {
+                    duration: speed * 5000,
+                    easing: 'linear',
+                    iterations: 1,
+                    fill: 'forwards'
+                }).onfinish = () => {
+                    money.remove();
+                };
+            }
+
+            window.addEventListener('resize', ()=>{
+                
+                const bagLeft = bag.offsetLeft;
+                const maxBagLeft = bagBar.clientWidth - bag.clientWidth;
+
+                let percent = bag.offsetLeft / bagBar.clientWidth;
+                console.log(percent)
+
+                if (bagLeft > maxBagLeft) {
+                    bag.style.left = maxBagLeft + 'px';
+                }
+            });
+
+            function checkCollision() {
+                const bagRect = bag.getBoundingClientRect();
+                const monies = document.querySelectorAll('#money');
+                monies.forEach(money => {
+                    const moneyRect = money.getBoundingClientRect();
+                    if (
+                        bagRect.left < moneyRect.left + moneyRect.width &&
+                        bagRect.left + bagRect.width > moneyRect.left &&
+                        bagRect.top < moneyRect.top + moneyRect.height &&
+                        bagRect.top + bagRect.height > moneyRect.top
+                    ) {
+                        score += 100;
+                        document.getElementById('score').textContent = 'SCORE: ' + score;
+                        money.remove();
+                    }
+                });
+            }
+
+            function checkCollisionNeg() {
+                const bagRect = bag.getBoundingClientRect();
+                const monies = document.querySelectorAll('#neg');
+                monies.forEach(money => {
+                    const moneyRect = money.getBoundingClientRect();
+                    if (
+                        bagRect.left < moneyRect.left + moneyRect.width &&
+                        bagRect.left + bagRect.width > moneyRect.left &&
+                        bagRect.top < moneyRect.top + moneyRect.height &&
+                        bagRect.top + bagRect.height > moneyRect.top
+                    ) {
+                        if(score > 0) {
+                            score -= 100;
+                            document.getElementById('score').textContent = 'SCORE: ' + score;
+                        }
+                        money.remove();
+                    }
+                });
+            }
+
+    function isMobileDevice() {
+      return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    }
+let m = isMobileDevice();
+
+function change1(){
+    let elmnts = document.querySelectorAll('#money')
+    for(element of elmnts) {
+        element.style.width = '15rem' 
+    }
+}
+
+function change2(){
+    let elmnts = document.querySelectorAll('#neg')
+    for(element of elmnts) {
+        element.style.width = '15rem' 
+    }
+}
+
+function change3(){
+    let elmnts = document.querySelectorAll('#bag')
+    for(element of elmnts) {
+        element.style.width = '20rem' 
+    }
+}
+
+function mobileDeviceCheck(){
+  var w = window.innerWidth;
+  if (w > 767) {
+    if (m) {
+        change1();
+        change2();
+        change3();
+        document.getElementById('score').style.fontSize = '4rem';
+    } else {
+
+    }
+  } 
+  
+  if (m) {
+        change1();
+        change2();
+        change3();
+        document.getElementById('score').style.fontSize = '4rem';
+    } else {
+
+
+    }
+}
+            
+            setInterval(createNegElement, 400);  // Create a new money element every 500m
+            setInterval(createMoneyElement, 400);  // Create a new money element every 500m
+            setInterval(checkCollision, 50); // Check for collisions every 50ms
+            setInterval(checkCollisionNeg, 50); // Check for collisions every 50ms
+
+
+        });
+
+    </script>
+</body>
+</html>
