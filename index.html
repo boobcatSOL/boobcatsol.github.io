@@ -45,9 +45,27 @@
         <a id="xhref" href="https://x.com/" style="color:black;margin-left: 6vw; font-size: 7vh;"><i class="fa-brands fa-square-x-twitter"></i></a>
         <a id="pfhref" href="https://pump.fun/" style="margin-left: 6vw;font-size: 1rem;"><img id="pfimg"style="width:8vh"src="./media/pump.png"></a>
         <a id="gamehref" href="./pages/game/index.html" style="color: black;margin-left: 6vw;font-size: 7vh;"><i class="fa-solid fa-gamepad"></i></a>
-   
+        <div id="tickerlabel2" style="color: black;font-size: 7vh;font-weight: 600;display: none;flex-direction: column;justify-content: center;flex-wrap: wrap;align-content: center;text-align: center;margin-left: auto;">
+            <span style="
+            width: 40vw;
+        ">$FRAKTA</span><span style="
+                font-size: 3vh;
+                background: linear-gradient(to bottom, #FFF121, #0058AB);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+            ">Ikea Bag</span>
+            
+        </div>
     </div>
-    <div id="tickerlabel" style="color: black;font-size: 7vh;font-weight: 600;display: flex;justify-content: center;"><span>$FRAKTA</span></div>
+    <div id="tickerlabel" style="color: black;font-size: 7vh;font-weight: 600;display: flex;flex-direction: column;justify-content: center;flex-wrap: wrap;align-content: center;text-align: center;">
+    <span>$FRAKTA</span><span style="
+        font-size: 3vh;
+        background: linear-gradient(to bottom, #FFF121, #0058AB);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+    ">Ikea Bag</span>
+    
+</div>
         <div id="c" style="display: flex;flex-direction: row;height: 80vh;padding: 2rem;"> 
             <div id="b" style="width: 100vw;box-sizing: border-box;text-decoration: none;overflow: hidden;-o-object-fit: cover;display: flex;/* box-shadow: inset 10px 10px 20px rgba(0, 0, 0, 1); */">
                 <div style="overflow: hidden;">
@@ -128,7 +146,7 @@
     
     </div>
             </div>
-            <div style="
+            <div id="bagNomicElement" style="
             display: flex;
             justify-content: center;
             align-items: center;
@@ -138,6 +156,8 @@
             padding: 1rem;
             /* width: 30vw; */
             flex-direction: column;
+            margin-top: 0vh;
+            transition: margin-top 1s ease;
         "><div style="
     padding: 1rem;
     border-radius: 1rem;
@@ -181,22 +201,24 @@
     background: saddlebrown;
 ">Chances are it's with you right now.</span> It's sturdy, reliable, and ready to be filled. Get yours and load it up today!
         </span></span></span></div>
-        <div style="display: flex;justify-content: center; padding:2rem;"><img id="elonkanye"src="https://i.imgur.com/l68vtg0.jpeg" style="
+        <div>
+        <div id="elonkanye1"style="transition: margin-top 1s ease; display: flex;justify-content: center; padding:2rem;"><img id="elonkanye"src="https://i.imgur.com/l68vtg0.jpeg" style="
             width: 35vw; 
             border-radius: 2rem;
         "></div>
-        <div style="display: flex;justify-content: center; padding:2rem;"><img id="tupacbiggie" src="https://i.imgur.com/cQOOruy.jpeg" style="
+        <div id="tupacbiggie1"style="transition: margin-top 1s ease;display: flex;justify-content: center; padding:2rem;"><img id="tupacbiggie" src="https://i.imgur.com/cQOOruy.jpeg" style="
             width: 35vw; 
             border-radius: 2rem;
         "></div>
-        <div style="display: flex;justify-content: center; padding:2rem;"><img id="vogue" src="https://i.imgur.com/r4xwRL1.jpeg" style="
+        <div id="vogue1" style="transition: margin-top 1s ease;display: flex;justify-content: center; padding:2rem;"><img id="vogue" src="https://i.imgur.com/r4xwRL1.jpeg" style="
             width: 35vw; 
             border-radius: 2rem;
         "></div>
-        <div style="display: flex;justify-content: center; padding:2rem;"><img id="rs" src="https://i.imgur.com/r4Ty8X8.png" style="
+        <div img id="rs1"  style="transition: margin-top 1s ease;display: flex;justify-content: center; padding:2rem;"><img id="rs" src="https://i.imgur.com/r4Ty8X8.png" style="
             width: 35vw; 
             border-radius: 2rem;
         "></div>
+    </div>
         <div id="svg1"style="height: 40vh;display: flex;flex-direction: column-reverse;"><img src="./media/footer-illustration.svg"></div>
         <div style="height: 40vh;background: #0058AB;"></div>
         <script>
@@ -235,6 +257,13 @@
                 let element26 = document.getElementById('tupacbiggie')
                 let element27 = document.getElementById('vogue')
                 let element28 = document.getElementById('rs')
+                let element29 = document.getElementById('bagNomicElement')
+
+                let element30 = document.getElementById('elonkanye1')
+                let element31 = document.getElementById('tupacbiggie1')
+                let element32 = document.getElementById('vogue1')
+                let element33 = document.getElementById('rs1')
+
                 element14.addEventListener('click',()=>{
                     alert('clicked1')
                 })
@@ -256,6 +285,11 @@
             } 
             
             if (m) {
+                    element30.style.marginTop = '16vh'
+                    element32.style.marginTop = '16vh'
+                    element32.style.marginTop = '16vh'
+                    element33.style.marginTop = '16vh'
+
                     element2.style.overflow = ''
                     element2.style.width= ''
                     element1.style.transform = 'translate(0, -48vh)'
@@ -308,6 +342,8 @@ element4.style.marginTop = '2rem'
                     element3.style.height = '100vh'
                   //  element3.style.width = '97vw'
                 } else {
+                    document.getElementById('tickerlabel2').style.display = 'flex';
+                    document.getElementById('tickerlabel').style.display = 'none';
                 }
             }
             window.addEventListener('resize',()=>{
@@ -318,17 +354,54 @@ element4.style.marginTop = '2rem'
         window.addEventListener('scroll', function() {
         if(m) {
             let element4 = document.getElementById('e');
+            let element30 = document.getElementById('elonkanye1')
+                let element31 = document.getElementById('tupacbiggie1')
+                let element32 = document.getElementById('vogue1')
+                let element33 = document.getElementById('rs1')
+            let element29 = document.getElementById('bagNomicElement')
             var scrollTop = window.scrollY || document.documentElement.scrollTop;
             var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
             console.log('Scroll Position:', scrollTop);
             console.log('Scroll Height:', scrollHeight);
             //alert(scrollTop)
-            if(scrollTop > 550) { 
-                element4.style.transition = 'height 1s ease;';
+            if(scrollTop > 600) { 
                 element4.style.height = '40vh'
-            } else {
-                element4.style.transition = 'height 1s ease;';
+            }else {
                 element4.style.height = '20vh'
+            }
+             if (scrollTop > 800){
+               // alert('a')
+                element29.style.marginTop = '-8vh'
+            }else {
+                element29.style.marginTop = '0vh'
+            }
+
+            if (scrollTop > 1800){
+               // alert('a')
+                element30.style.marginTop = '0vh'
+            }else {
+                element30.style.marginTop = '16vh'
+            }
+
+            if (scrollTop > 3200){
+               // alert('a')
+                element31.style.marginTop = '0vh'
+            }else {
+                element31.style.marginTop = '16vh'
+            }
+
+            if (scrollTop > 4000){
+               // alert('a')
+                element32.style.marginTop = '0vh'
+            }else {
+                element32.style.marginTop = '16vh'
+            }
+
+            if (scrollTop > 4800){
+               // alert('a')
+                element33.style.marginTop = '0vh'
+            }else {
+                element33.style.marginTop = '16vh'
             }
         }
     });
