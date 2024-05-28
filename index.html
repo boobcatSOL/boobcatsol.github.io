@@ -1,6 +1,6 @@
 <html><head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <title>Hej!</title>
+    <title>$FRAKTA - Ikea Bag</title>
     <style>
          @font-face {
             font-family: 'CustomFont';
@@ -45,7 +45,9 @@
         <a id="xhref" href="https://x.com/" style="color:black;margin-left: 6vw; font-size: 7vh;"><i class="fa-brands fa-square-x-twitter"></i></a>
         <a id="pfhref" href="https://pump.fun/" style="margin-left: 6vw;font-size: 1rem;"><img id="pfimg"style="width:8vh"src="./media/pump.png"></a>
         <a id="gamehref" href="./pages/game/index.html" style="color: black;margin-left: 6vw;font-size: 7vh;"><i class="fa-solid fa-gamepad"></i></a>
-        </div>
+   
+    </div>
+    <div id="tickerlabel" style="color: black;font-size: 7vh;font-weight: 600;display: flex;justify-content: center;"><span>$FRAKTA</span></div>
         <div id="c" style="display: flex;flex-direction: row;height: 80vh;padding: 2rem;"> 
             <div id="b" style="width: 100vw;box-sizing: border-box;text-decoration: none;overflow: hidden;-o-object-fit: cover;display: flex;/* box-shadow: inset 10px 10px 20px rgba(0, 0, 0, 1); */">
                 <div style="overflow: hidden;">
@@ -133,9 +135,15 @@
             font-family: CustomFont, sans-serif;
             font-weight: 600;
             text-align: center;
+            padding: 1rem;
             /* width: 30vw; */
             flex-direction: column;
         "><div style="
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 1rem rgba(0,0,0,0.5);
+    width: 90vw;
+"><div style="
     display: flex;
     justify-content: center;
     /* width: 48vw; */
@@ -147,9 +155,9 @@
     padding: .5rem;
     margin-bottom: 10vh;
 
-">Bagnomics</div></div><div><img id="bagnomic"src="./media/realfake.png" style="
+">Bagnomics</div></div><div><img id="bagnomic" src="./media/realfake.png" style="
     width: 50vw;
-"></div></div>
+"></div></div></div>
 
             <div style="
             display: flex;
@@ -158,18 +166,32 @@
             font-family: CustomFont, sans-serif;
             font-weight: 600;
             text-align: center;
+            padding:2rem;
             /* width: 30vw; */
         "><span id="d2" style="
-            width: 50vw;
+            width: 100vw;
             font-size: 6vh;
-            background: rgba(0,0,0,0.2);
+            background: #0058AB;
             border-radius: 1rem;
             padding: 1rem;
-            margin-top: 30vh;
-        ">We all know this bag. Maybe the bag knows you. Chances are, you've had one in your home at one point. Chances are it's with you right now. It's sturdy, reliable, and ready to be filled. Get yours and load it up today!
-        </span></div>
-        <div style="display: flex;justify-content: center;margin-top: 50vh;"><img id="elonkanye"src="./media/elonkanye.jpg" style="
-            width: 50vw; 
+            color: #FFF121;
+        "><span style="
+    background: saddlebrown;
+">We all know this bag.</span><span style="text-decoration: underline; color:white;"> Or Maybe this bag knows you.</span>  Chances are, you've had one in your home at one point. <span style="
+    background: saddlebrown;
+">Chances are it's with you right now.</span> It's sturdy, reliable, and ready to be filled. Get yours and load it up today!
+        </span></span></span></div>
+        <div style="display: flex;justify-content: center; padding:2rem;"><img id="elonkanye"src="./media/elonkanye.jpg" style="
+            width: 35vw; 
+            border-radius: 2rem;
+        "></div>
+        <div style="display: flex;justify-content: center; padding:2rem;"><img id="tupacbiggie" src="./media/tupacbiggiecobain.jpg" style="
+            width: 35vw; 
+            border-radius: 2rem;
+        "></div>
+        <div style="display: flex;justify-content: center; padding:2rem;"><img id="vogue" src="./media/earrings.jpg" style="
+            width: 35vw; 
+            border-radius: 2rem;
         "></div>
         <div id="svg1"style="height: 40vh;display: flex;flex-direction: column-reverse;"><img src="./media/footer-illustration.svg"></div>
         <div style="height: 40vh;background: #0058AB;"></div>
@@ -205,6 +227,9 @@
                 let element22 = document.getElementById('bagnomiclabel')
                 let element23 = document.getElementById('elonkanye')
                 let element24 = document.getElementById('svg1');
+                let element25 = document.getElementById('tickerlabel')
+                let element26 = document.getElementById('tupacbiggie')
+                let element27 = document.getElementById('vogue')
                 element14.addEventListener('click',()=>{
                     alert('clicked1')
                 })
@@ -248,24 +273,28 @@
                     element4.style.transform = 'translate(0, -46vh)'
                     element4.style.height = '20vh'
                     element4.style.padding = '0rem'
-                    element20.style.fontSize = '4vh'
-                    element20.style.width = '80vw'
+                    element20.style.fontSize = '3vh'
+                    element20.style.width = '100vw'
+
 
                     element16.style.fontSize = '4.5vh'
                     element17.style.width = '5vh'
                     element18.style.fontSize = '4.5vh'
                     element19.style.fontSize = '4.5vh'
+                   // element25.style.fontSize = '4vh'
     
 
                     element10.style.fontSize = '3vh'
                     element11.style.paddingRight = '1.4rem';
                     element11.style.paddingRight = '1.4rem';
                     element12.style.fontSize = '3vh'
-                    element21.style.width = '100vw';
+                    element21.style.width = '90vw';
                     element22.style.fontSize = '5vh';
-                    element23.style.width = '100vw'
+                    element23.style.width = '90vw'
                     element23.style.marginTop = ''
                     element24.style.height = '10vh'
+                    element26.style.width = '90vw'
+                    element27.style.width = '90vw'
 //element4.style.height = ''
 element4.style.width = ''
 element4.style.marginLeft = ''
@@ -347,7 +376,7 @@ element4.style.marginTop = '2rem'
       }, 1000); // Set timeout to match half of the interval for smooth transition
     }
 
-    setInterval(changeImage, 3000);
+    setInterval(changeImage, 8000);
         </script>
     </body>
 </html>
